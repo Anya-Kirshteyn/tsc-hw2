@@ -1,3 +1,4 @@
+"use strict";
 // #8Nmt60ZT
 // - створити блок,
 //     - додати йому класи wrap, collapse, alpha, beta
@@ -92,28 +93,62 @@
 // #sH8c4er
 // - Створити довільний елемент з id = text та створити кнопку.Використовуючи JavaScript,
 //     зробіть так, щоб при натисканні на кнопку зникав елемент з id="text".
-var h1 = document.getElementById('text222');
-var button = document.getElementById('button222');
+let h1 = document.getElementById('text222');
+let button = document.getElementById('button222');
 button.onclick = function () {
     h1.style.display = 'none';
 };
+// #j693ca8
 // - створити інпут який приймає вік людини та кнопку яка підтверджує дію.При натисканні на кнопку зчитати інформацію з інпуту та перевірити вік чи меньше він ніж 18, та повідомити про це користувача
-// let ageInput = document.getElementById("userAge");
-// let button = document.getElementById("ageButton");
-// let userMsg=document.getElementById("message");
-// button.addEventListener("click", function(){
-//
-//    if( ageInput.value !== ""){
-//        if(ageInput.value >= 18){
-//            userMsg.innerText= 'valid age'
-//        }
-//        if(ageInput.value < 18){
-//            userMsg.innerText= 'invalid age'
-//        }
-//
-//    }
-//    if(!ageInput.value){
-//        userMsg.innerText= 'no age'
-//
-//     }
-// })
+let ageInput = document.getElementById("userAge");
+let button11 = document.getElementById("ageButton");
+let userMsg = document.getElementById("message");
+button11.addEventListener("click", function () {
+    let age = parseInt(ageInput.value);
+    if (isNaN(age)) {
+        userMsg.innerText = 'no age';
+    }
+    else if (age < 18) {
+        userMsg.innerText = 'invalid age';
+    }
+    else {
+        userMsg.innerText = 'valid age';
+    }
+});
+// #ymAmN2xJ
+// Стоврити форму з трьома полями для name,surname,age та кнопкою. При натисканні на кнопку зчитати данні з полів, та вивести об'єкт в документ.' +
+// ' Іншими словами : заповниои форму, натиснули кнопку, під формою з'явився блок з вашим об'єктом
+let inputs = document.getElementsByClassName('inputs');
+let result = document.getElementById('resultDiv222');
+let form = document.getElementById('form');
+form.onsubmit = function (ev) {
+    ev.preventDefault();
+    let resultText = '';
+    for (let input of inputs) {
+        resultText += input.value + ' ';
+    }
+    result.innerHTML = resultText;
+};
+result.addEventListener('mousemove', (ev) => {
+    const r = ev.clientY;
+    const g = ev.clientX;
+    const b = ev.clientY;
+    result.style.background = `rgb(${r},${g},${b})`;
+    result.style.color = 'purple';
+});
+// #2VaLt4vDczH
+// є сторінка, на якій є блок, я кому знаходиьтся цифра. написати код, який при кожному перезавантажені сторінки буде додавати до неї +1
+let div = document.getElementById("onePlus");
+let count = localStorage.getItem('key') || 0;
+count = Number(count) + 1;
+localStorage.setItem('key', count);
+div.innerHTML = count + '';
+// =====================================================================
+// Є сторінка index.html (назва довільна),
+// при відвідуванні якої в локальне сховще, в масив sessionsList зберігається інформація про дату та час відвідування сторінки.
+//     Є  сторінка sessionsListPage.html (назва довільна),
+// при відвідуванні якої потрібно відмалювати всю інформацію про відвідування сторінки index.html.
+//     Інфу НЕ виводити в консоль, а малювати в DOM
+let sessionsList = JSON.parse(localStorage.getItem("sessionsList")) || [];
+sessionsList.push(new Date());
+localStorage.setItem("sessionsList", JSON.stringify(sessionsList));

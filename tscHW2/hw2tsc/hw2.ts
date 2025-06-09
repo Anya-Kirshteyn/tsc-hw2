@@ -129,26 +129,58 @@ else {
     userMsg.innerText = 'valid age'}
 })
 
+// #ymAmN2xJ
+// Стоврити форму з трьома полями для name,surname,age та кнопкою. При натисканні на кнопку зчитати данні з полів, та вивести об'єкт в документ.' +
+// ' Іншими словами : заповниои форму, натиснули кнопку, під формою з'явився блок з вашим об'єктом
+
+let inputs:HTMLCollectionOf<HTMLInputElement>=document.getElementsByClassName('inputs') as HTMLCollectionOf<HTMLInputElement>
+let result:HTMLDivElement=document.getElementById ('resultDiv222') as HTMLDivElement
+let form:HTMLFormElement=document.getElementById('form') as HTMLFormElement
+
+form.onsubmit = function(ev:Event):void{
+    ev.preventDefault()
+    let resultText:string=''
+  for(let input of inputs){
+      resultText += input.value + ' '
+  }
+    result.innerHTML = resultText
+
+}
+result.addEventListener('mousemove', (ev: MouseEvent): void => {
+    const r: number = ev.clientY;
+    const g: number = ev.clientX;
+    const b: number = ev.clientY;
+
+    result.style.background = `rgb(${r},${g},${b})`;
+    result.style.color = 'purple';
+});
 
 
 
+// #2VaLt4vDczH
+// є сторінка, на якій є блок, я кому знаходиьтся цифра. написати код, який при кожному перезавантажені сторінки буде додавати до неї +1
 
+const div: HTMLDivElement | null = document.getElementById("onePlus") as HTMLDivElement;
 
-//    if( ageInput.value !== ""){
-//        if(+ageInput.value >= 18){
-//            userMsg.innerText= 'valid age'
-//        }
-//        if(+ageInput.value < 18){
-//            userMsg.innerText= 'invalid age'
-//        }
+if (div) {
+    let countStr: string | null = localStorage.getItem('key');
+    let count: number = countStr ? Number(countStr) : 0;
+    count += 1;
+    localStorage.setItem('key', count.toString());
+    div.innerText = count.toString();
+}
+
+// =====================================================================
+// Є сторінка index.html (назва довільна),
+// при відвідуванні якої в локальне сховще, в масив sessionsList зберігається інформація про дату та час відвідування сторінки.
+//     Є  сторінка sessionsListPage.html (назва довільна),
+// при відвідуванні якої потрібно відмалювати всю інформацію про відвідування сторінки index.html.
+//     Інфу НЕ виводити в консоль, а малювати в DOM
+// let sessionsList=JSON.parse(localStorage.getItem("sessionsList")) || [];
+// sessionsList.push(new Date());
+// localStorage.setItem("sessionsList",JSON.stringify(sessionsList));
 //
-//    }
-//    if(!ageInput.value){
-//        userMsg.innerText= 'no age'
 //
-//     }
-// })
-
 
 
 
