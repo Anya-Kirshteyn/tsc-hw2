@@ -176,13 +176,53 @@ if (div) {
 //     Є  сторінка sessionsListPage.html (назва довільна),
 // при відвідуванні якої потрібно відмалювати всю інформацію про відвідування сторінки index.html.
 //     Інфу НЕ виводити в консоль, а малювати в DOM
-// let sessionsList=JSON.parse(localStorage.getItem("sessionsList")) || [];
-// sessionsList.push(new Date());
-// localStorage.setItem("sessionsList",JSON.stringify(sessionsList));
-//
-//
+const getOrCreateSessionsList = (): Date[] => {
+    const saved = localStorage.getItem('sessionsList');
+    return saved ? JSON.parse(saved) : [];
+};
+const sessionsList: Date[] = getOrCreateSessionsList();
+sessionsList.push(new Date());
+localStorage.setItem('sessionsList', JSON.stringify(sessionsList));
+
+// #Jg0gPO00
+// створити конвертор ваги з кг в фунти.
+// ---данні заповнюються через інпут.
+//--- При введенні даних обрахунок стається миттєво, без натискань додаткових кнопок
 
 
+let result6:HTMLSpanElement=document.getElementById("result") as HTMLSpanElement;
+let input:HTMLInputElement = document.getElementById("input")as HTMLInputElement;
+input.addEventListener("input", function (): void {
+    const kg: number = parseFloat(input.value);
+
+
+    if (!isNaN(kg)) {
+        const pounds: number = kg * 2.20462;
+        result6.innerText = pounds.toFixed(2);
+    } else {
+        result6.innerText = "";
+    }
+});
+
+// В localStorage зберігаються масиви.
+//     -Вам потрібно зробити функцію, які дістає потрібний вам масив з localStorage та додає в нього об'єкт
+//   - сигнатура функції - addToLocalStorage(arrayName:string,objToAdd:any{}):void
+
+
+// function addToLocalStorage(arrayName,objToAdd){
+//     const arraysName=localStorage.getItem(arrayName);
+//     if(!arraysName){
+//         document.write('name does not exist');
+//     }
+//     let arraysParse=JSON.parse(arraysName);
+//
+//     if(typeof objToAdd === 'object'){
+//         arraysParse.push(objToAdd);
+//     }
+// localStorage.setItem(arrayName, JSON.stringify(objToAdd));
+// }
+//
+// addToLocalStorage('name','Ann65');
 
 
 

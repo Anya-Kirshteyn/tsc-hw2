@@ -51,10 +51,20 @@
 <!--// є сторінка, на якій є блок, я кому знаходиьтся цифра. написати код, який при кожному перезавантажені сторінки буде додавати до неї +1-->
 <div id="onePlus"></div>
 
+<!--// Є сторінка index.html (назва довільна),-->
+<!--// при відвідуванні якої в локальне сховще, в масив sessionsList зберігається інформація про дату та час відвідування сторінки.-->
+<!--//     Є  сторінка sessionsListPage.html (назва довільна),-->
+<!--// при відвідуванні якої потрібно відмалювати всю інформацію про відвідування сторінки index.html.-->
+<!--//     Інфу НЕ виводити в консоль, а малювати в DOM-->
+<p>Your visit has been recorded.</p>
+<a href="sessionsListPage.html">View visit history</a>
+<script src="hw2.js"></script>
 
 
+<!--#Jg0gPO00-->
+<!--створити конвертор ваги з кг в фунти. данні заповнюються через інпут. При введенні даних обрахунок стається миттєво, без натискань додаткових кнопок-->
 
-    <input id="input" type="number" placeholder="enter kg amount to convert to pound"/>
+    <input style="width: 250px" id="input" type="number" placeholder="enter kg amount to convert to pound"/>
     <div id="inputDIV">
         <p>result: <span id="result"></span> in pound</p>
     </div>

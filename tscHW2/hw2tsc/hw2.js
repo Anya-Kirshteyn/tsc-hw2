@@ -138,17 +138,57 @@ result.addEventListener('mousemove', (ev) => {
 });
 // #2VaLt4vDczH
 // є сторінка, на якій є блок, я кому знаходиьтся цифра. написати код, який при кожному перезавантажені сторінки буде додавати до неї +1
-let div = document.getElementById("onePlus");
-let count = localStorage.getItem('key') || 0;
-count = Number(count) + 1;
-localStorage.setItem('key', count);
-div.innerHTML = count + '';
+const div = document.getElementById("onePlus");
+if (div) {
+    let countStr = localStorage.getItem('key');
+    let count = countStr ? Number(countStr) : 0;
+    count += 1;
+    localStorage.setItem('key', count.toString());
+    div.innerText = count.toString();
+}
 // =====================================================================
 // Є сторінка index.html (назва довільна),
 // при відвідуванні якої в локальне сховще, в масив sessionsList зберігається інформація про дату та час відвідування сторінки.
 //     Є  сторінка sessionsListPage.html (назва довільна),
 // при відвідуванні якої потрібно відмалювати всю інформацію про відвідування сторінки index.html.
 //     Інфу НЕ виводити в консоль, а малювати в DOM
-let sessionsList = JSON.parse(localStorage.getItem("sessionsList")) || [];
+const getOrCreateSessionsList = () => {
+    const saved = localStorage.getItem('sessionsList');
+    return saved ? JSON.parse(saved) : [];
+};
+const sessionsList = getOrCreateSessionsList();
 sessionsList.push(new Date());
-localStorage.setItem("sessionsList", JSON.stringify(sessionsList));
+localStorage.setItem('sessionsList', JSON.stringify(sessionsList));
+// #Jg0gPO00
+// створити конвертор ваги з кг в фунти.
+// ---данні заповнюються через інпут.
+//--- При введенні даних обрахунок стається миттєво, без натискань додаткових кнопок
+let result6 = document.getElementById("result");
+let input = document.getElementById("input");
+input.addEventListener("input", function () {
+    const kg = parseFloat(input.value);
+    if (!isNaN(kg)) {
+        const pounds = kg * 2.20462;
+        result6.innerText = pounds.toFixed(2);
+    }
+    else {
+        result6.innerText = "";
+    }
+});
+// В localStorage зберігаються масиви.
+//     -Вам потрібно зробити функцію, які дістає потрібний вам масив з localStorage та додає в нього об'єкт
+//   - сигнатура функції - addToLocalStorage(arrayName:string,objToAdd:any{}):void
+// function addToLocalStorage(arrayName,objToAdd){
+//     const arraysName=localStorage.getItem(arrayName);
+//     if(!arraysName){
+//         document.write('name does not exist');
+//     }
+//     let arraysParse=JSON.parse(arraysName);
+//
+//     if(typeof objToAdd === 'object'){
+//         arraysParse.push(objToAdd);
+//     }
+// localStorage.setItem(arrayName, JSON.stringify(objToAdd));
+// }
+//
+// addToLocalStorage('name','Ann65');
