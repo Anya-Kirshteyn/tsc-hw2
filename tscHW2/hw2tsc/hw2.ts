@@ -209,8 +209,11 @@ input.addEventListener("input", function (): void {
 //   - сигнатура функції - addToLocalStorage(arrayName:string,objToAdd:any{}):void
 
 
-// function addToLocalStorage(arrayName,objToAdd){
-//     const arraysName=localStorage.getItem(arrayName);
+function addToLocalStorage(arrayName:string,objToAdd:any):void {
+
+
+}
+//     const arraysName:string=localStorage.getItem(arrayName) as string;
 //     if(!arraysName){
 //         document.write('name does not exist');
 //     }
